@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import clsx from 'clsx';
-import Drawer from '@material-ui/core/Drawer';
+import { Drawer, Typography } from '@material-ui/core';
 import NavigationMenu from '../NavigationMenu';
 import { useStyles } from '../../hooks/useStyle';
 
 const Sidebar = ({ open, user }) => {
   const classes = useStyles();
-  console.log(open);
 
   return (
     <Drawer
@@ -26,9 +25,9 @@ const Sidebar = ({ open, user }) => {
       open={open}
     >
       <div className={classes.toolbar} style={{ color: '#fff', backgroundColor: '#3C4252' }}>
-        <div>
+        <Typography variant="h4">
           Learnly
-        </div>
+        </Typography>
       </div>
       <div>{user && user.name}</div>
       <div>{user && user.email}</div>

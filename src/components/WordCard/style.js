@@ -2,11 +2,11 @@ import { makeStyles } from '@material-ui/core';
 
 export default makeStyles(theme => ({
   root: {
-    // maxWidth: '100%',
-    // paddingTop: theme.spacing(3),
-    // paddingBottom: theme.spacing(2),
-    // paddingRight: theme.spacing(3),
-    // paddingLeft: theme.spacing(3),
+    maxWidth: '100%',
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(2),
+    paddingRight: theme.spacing(3),
+    paddingLeft: theme.spacing(3),
   },
   imageWrapper: {
     height: '64px',
@@ -44,19 +44,21 @@ export default makeStyles(theme => ({
     alignItems: 'center',
     paddingTop: theme.spacing(1),
   },
-  updateIcon: {
+  lastPracticedIcon: {
     color: theme.palette.text.secondary,
   },
-  updateText: {
+  lastPracticedText: {
     marginLeft: theme.spacing(1),
     color: theme.palette.text.secondary,
+    cursor: 'default',
   },
-  downloadsIcon: {
+  totalPracticedIcon: {
     marginLeft: 'auto',
     color: theme.palette.text.secondary,
   },
-  downloadsText: {
+  totalPracticedText: {
     marginLeft: theme.spacing(1),
     color: theme.palette.text.secondary,
+    cursor: 'default',
   },
 }));

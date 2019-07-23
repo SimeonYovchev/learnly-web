@@ -44,7 +44,7 @@ const AppHeader = ({ toggleSidebar, open, user, onLogout }) => {
           {toggleSidebarButtons}
         </IconButton>
 
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
+        <Typography variant="h4" style={{ flexGrow: 1 }}>
           Home
         </Typography>
         {user && user.name && <Button color="inherit" onClick={onLogout}>Logout</Button>}

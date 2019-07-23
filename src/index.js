@@ -1,25 +1,32 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-
+import { ThemeProvider } from '@material-ui/styles';
 import configureStore from './store/configureStore';
+import { PublicRoutes } from './Routes';
+import * as serviceWorker from './serviceWorker';
+import theme from './theme';
+import './index.css';
 
 const store = configureStore({});
 
-const renderApp = () =>
+const renderApp = () => {
   render(
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <PublicRoutes />
+        </ThemeProvider>
+      </BrowserRouter>
     </Provider>,
     document.getElementById('root'),
   );
+};
 
-// if (process.env.NODE_ENV !== 'production' && module.hot) {
-//   module.hot.accept('./components/App', renderApp)
-// }
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+  module.hot.accept('./components/App', renderApp);
+}
 
 renderApp();
 

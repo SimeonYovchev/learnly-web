@@ -1,0 +1,40 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "react-hooks"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "func-names": 0,
+    "strict": 0,
+    "linebreak-style": 0,
+    "no-underscore-dangle": 0
+  },
+  "globals": {
+    "React": true,
+    "document": true,
+    "performance": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

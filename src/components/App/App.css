@@ -31,3 +31,16 @@
     transform: rotate(360deg);
   }
 }
+
+#app-wrapper {
+  display: flex;
+}
+
+#content {
+  flex-grow: 1;
+  padding: 8px;
+  /* padding-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px; */
+  background-color: #f8fafc;
+}

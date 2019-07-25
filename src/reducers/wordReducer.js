@@ -3,6 +3,7 @@ import {
   GET_WORD_REQUEST,
   GET_WORD_SUCCESS,
   GET_WORD_FAILURE,
+  CLEAR_WORD,
 } from '../constants';
 
 const initialState = {
@@ -28,5 +29,9 @@ export default createReducer(initialState, {
     isLoaded: false,
     isLoading: false,
     error: true,
+  }),
+  [CLEAR_WORD]: state => ({
+    ...state,
+    ...initialState,
   }),
 });

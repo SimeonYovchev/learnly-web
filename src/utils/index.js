@@ -90,7 +90,7 @@ export const formatLastPracticed = (lastPracticedDate) => {
   const differenceInSeconds = (now.getTime() - practicedDate.getTime()) / 1000;
   const differenceInMinutes = Math.floor((differenceInSeconds / 60));
   let result = '';
-  console.log(differenceInMinutes);
+  // console.log(differenceInMinutes);
 
   Object.entries(timeMap).forEach(([key, props]) => {
     if (differenceInMinutes >= props.range[0] && differenceInMinutes < props.range[1]) {

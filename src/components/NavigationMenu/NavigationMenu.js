@@ -24,12 +24,6 @@ const NavigationMenu = () => (
       </ListItemIcon>
       <ListItemText primary="Words" />
     </ListItem>
-    <ListItem button component={Link} to="/login">
-      <ListItemIcon>
-        <SettingsIcon style={{ color: '#fff' }} />
-      </ListItemIcon>
-      <ListItemText primary="Login" />
-    </ListItem>
     <ListItem button component={Link} to="/settings">
       <ListItemIcon>
         <SettingsIcon style={{ color: '#fff' }} />

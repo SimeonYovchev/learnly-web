@@ -2,6 +2,7 @@ import {
   GET_WORD_REQUEST,
   GET_WORD_SUCCESS,
   GET_WORD_FAILURE,
+  CLEAR_WORD,
 } from '../constants';
 import httpService from '../services/httpService';
 
@@ -27,3 +28,5 @@ export const getWord = (wordId) => {
       .catch(error => dispatch(getWordFailure(error)));
   };
 };
+
+export const clearWord = () => ({ type: CLEAR_WORD });

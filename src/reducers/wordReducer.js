@@ -9,7 +9,12 @@ import {
 const initialState = {
   isLoaded: false,
   isLoading: false,
-  word: {},
+  word: {
+    text: '',
+    translations: [],
+    answers: [],
+    examples: [],
+  },
   error: false,
 };
 

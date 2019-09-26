@@ -9,7 +9,12 @@ import {
 const initialState = {
   isLoaded: false,
   isLoading: false,
-  words: [],
+  wordsData: {
+    totalCount: 0,
+    wordsList: [],
+    currentPage: 0,
+    itemsPerPage: 20,
+  },
   error: false,
 };
 
@@ -22,7 +27,13 @@ export default createReducer(initialState, {
     ...state,
     isLoaded: true,
     isLoading: false,
-    words: payload,
+    // wordsData: payload,
+    wordsData: {
+      totalCount: payload.totalCount,
+      wordsList: payload.data,
+      currentPage: payload.currentPage,
+      itemsPerPage: payload.itemsPerPage,
+    },
   }),
   [GET_WORDS_FAILURE]: state => ({
     ...state,

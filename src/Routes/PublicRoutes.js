@@ -9,7 +9,7 @@ const PublicRoutes = () => (
   <Switch>
     <Route path="/login" component={LoginForm} />
     <Route path="/register" component={RegisterForm} />
-    <ProtectedRoute component={App} />
+    <ProtectedRoute path="/" component={App} />
   </Switch>
 );
 

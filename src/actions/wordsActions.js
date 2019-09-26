@@ -15,16 +15,20 @@ export const getWordsSuccess = (words) => {
 };
 export const getWordsFailure = () => ({ type: GET_WORDS_FAILURE });
 
-export const getWords = () => {
+export const getWords = (page, size) => {
   return (dispatch) => {
     dispatch(getWordsRequest());
 
-    httpService.get('/words') // extract this call into service
+    httpService.get(`/words?page=${page}&size=${size}`)
       .then((response) => {
-        console.log(response);
-        return response;
+        const payload = {
+          ...response.data,
+          currentPage: page,
+          itemsPerPage: size,
+        };
+        return payload;
       })
-      .then(response => dispatch(getWordsSuccess(response.data)))
+      .then(response => dispatch(getWordsSuccess(response)))
       .catch(error => dispatch(getWordsFailure(error)));
   };
 };

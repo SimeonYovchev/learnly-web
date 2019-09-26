@@ -2,10 +2,20 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Paper } from '@material-ui/core';
 import { getWord, clearWord } from '../../actions/wordActions';
+import useWordDetailsStyle from './wordDetailsStyle';
+import WordExamples from '../WordExamples/wordExamples';
+import WordAnswers from '../WordAnswers/wordAnswers';
+import WordTranslations from '../WordTranslations/WordTranslations';
+import WordHeader from '../WordHeader/WordHeader';
 
-const WordDetails = ({ word, match, fetchWord, clearWord }) => {
+const WordDetails = ({ word, match, location, fetchWord, clearWord }) => {
+  const classes = useWordDetailsStyle();
   const wordId = match.params.id;
+
+  console.log(location);
+
   useEffect(() => {
     fetchWord(wordId);
     return () => {
@@ -13,8 +23,15 @@ const WordDetails = ({ word, match, fetchWord, clearWord }) => {
     };
   }, [wordId, fetchWord, clearWord]);
 
-  return (<div>{word.text}</div>);
-}
+  return (
+    <Paper className={classes.root}>
+      <WordHeader text={word.text} />
+      <WordTranslations translations={word.translations} />
+      <WordExamples examples={word.examples} />
+      <WordAnswers answers={word.answers} />
+    </Paper>
+  );
+};
 
 const mapStateToProps = (state) => {
   return {

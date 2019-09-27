@@ -9,9 +9,9 @@ export default {
     dark: '#0B48A0',
   },
   secondary: {
-    main: '#7d58ff',
-    light: '',
-    dark: '#37248F',
+    main: '#3C4252',
+    light: '#6f7685',
+    dark: '#212326',
   },
   success: {
     main: '#00c853',

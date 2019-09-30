@@ -14,8 +14,6 @@ const WordDetails = ({ word, match, location, fetchWord, clearWord }) => {
   const classes = useWordDetailsStyle();
   const wordId = match.params.id;
 
-  console.log(location);
-
   useEffect(() => {
     fetchWord(wordId);
     return () => {

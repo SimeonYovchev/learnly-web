@@ -20,7 +20,7 @@ const WordAnswers = ({ answers }) => {
         <QuestionAnswerOutlined className={classes.questionAnswerIcon} />
         Answers
       </Typography>
-      {answers.length ? (
+      {answers.list && answers.list.length ? (
         <Table size="small">
           <TableHead>
             <TableRow>
@@ -30,7 +30,7 @@ const WordAnswers = ({ answers }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {answers.map((answer, i) => (
+            {answers.list.map((answer, i) => (
               <TableRow key={i}>
                 <TableCell>{answer.text}</TableCell>
                 <TableCell>{answer.createdAt}</TableCell>
@@ -49,7 +49,7 @@ const WordAnswers = ({ answers }) => {
 };
 
 WordAnswers.propTypes = {
-  answers: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  answers: PropTypes.shape().isRequired,
 };
 
 export default WordAnswers;

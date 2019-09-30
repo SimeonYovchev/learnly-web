@@ -56,6 +56,13 @@ const theme = createMuiTheme({
         color: '#E4E7EB',
       },
     },
+    MuiSelect: {
+      select: {
+        '&:focus': {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
   },
 });
 

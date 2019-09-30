@@ -12,8 +12,13 @@ const initialState = {
   word: {
     text: '',
     translations: [],
-    answers: [],
     examples: [],
+    answers: {
+      totalCount: 0,
+      correctAnswersCount: 0,
+      incorrectAnswersCount: 0,
+      list: [],
+    },
   },
   error: false,
 };

@@ -42,7 +42,8 @@ const WordCard = ({ word }) => {
                 className={classes.lastPracticedText}
                 variant="body2"
               >
-                {word.answers.length && formatLastPracticed(word.answers[0].createdAt)}
+                {word.answers.list &&
+                  word.answers.list.length && formatLastPracticed(word.answers.list[0].createdAt)}
               </Typography>
             </Tooltip>
             <CheckCircleOutline className={classes.totalPracticedIcon} />
@@ -51,7 +52,7 @@ const WordCard = ({ word }) => {
                 className={classes.totalPracticedText}
                 variant="body2"
               >
-                {word.answers && word.answers.length}
+                {word.answers.list && word.answers.list.length}
                 &nbsp;Times
               </Typography>
             </Tooltip>

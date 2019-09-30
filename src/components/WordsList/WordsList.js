@@ -6,10 +6,14 @@ import { Grid } from '@material-ui/core';
 import { getWords, clearWords } from '../../actions/wordsActions';
 import WordCard from '../WordCard';
 import Pagination from '../Pagination/Pagination';
+import Sort from '../SortComponent';
+import { wordsSortFields } from '../../constants/sortFields';
 
-const WordsList = ({ words, totalCount, page, size, fetchWords, clearWords }) => {
+const WordsList = ({
+  words, totalCount, page, size, fetchWords, clearWords, sortBy, direction,
+}) => {
   useEffect(() => {
-    fetchWords(page, size);
+    fetchWords(page, size, sortBy, direction);
     return () => {
       clearWords();
     };
@@ -23,12 +27,33 @@ const WordsList = ({ words, totalCount, page, size, fetchWords, clearWords }) =>
     });
   }, [page]);
 
-  const handleChangePage = (event, newPage) => {
-    fetchWords(newPage, size);
+  const handleChangePage = (e, newPage) => {
+    fetchWords(newPage, size, sortBy, direction);
+  };
+
+  const handleSort = (e) => {
+    const sortField = e.target.value;
+    const sortObject = { sortBy, direction };
+    if (sortField === sortBy) {
+      sortObject.direction = (direction === 'desc') ? 'asc' : 'desc';
+    } else {
+      sortObject.sortBy = sortField;
+      sortObject.direction = 'desc';
+    }
+
+    fetchWords(page, size, sortObject.sortBy, sortObject.direction);
   };
 
   return (
     <React.Fragment>
+      <div>
+        <Sort
+          path={sortBy}
+          sortFields={wordsSortFields}
+          onSort={handleSort}
+        />
+      </div>
+
       <Grid container spacing={3}>
         {words.map(word => <WordCard key={word._id} word={word} />)}
       </Grid>
@@ -49,6 +74,8 @@ const mapStateToProps = state => ({
   size: state.wordsReducer.wordsData.itemsPerPage,
   isLoaded: state.wordsReducer.isLoaded,
   itemsPerPage: state.wordsReducer.wordsData.itemsPerPage,
+  sortBy: state.wordsReducer.wordsData.sortBy,
+  direction: state.wordsReducer.wordsData.direction,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -61,6 +88,8 @@ WordsList.propTypes = {
   totalCount: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   size: PropTypes.number.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  direction: PropTypes.string.isRequired,
   fetchWords: PropTypes.func.isRequired,
   clearWords: PropTypes.func.isRequired,
 };

@@ -14,6 +14,8 @@ const initialState = {
     wordsList: [],
     currentPage: 0,
     itemsPerPage: 20,
+    sortBy: 'createdAt',
+    direction: 'desc',
   },
   error: false,
 };
@@ -33,6 +35,8 @@ export default createReducer(initialState, {
       wordsList: payload.data,
       currentPage: payload.currentPage,
       itemsPerPage: payload.itemsPerPage,
+      sortBy: payload.sortBy,
+      direction: payload.direction,
     },
   }),
   [GET_WORDS_FAILURE]: state => ({

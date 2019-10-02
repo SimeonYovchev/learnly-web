@@ -29,7 +29,6 @@ const LoginForm = ({ user, loginUser, history }) => {
     <div className="login-form-container">
       <h2 style={{ fontWeight: 500, color: 'rgba(0, 0, 0, 0.87)' }}>LOGIN TO YOUR ACCOUNT</h2>
       <form className="login-form" onSubmit={handleSubmit} noValidate autoComplete="off">
-        ￼
         <TextField
           type="email"
           name="email"

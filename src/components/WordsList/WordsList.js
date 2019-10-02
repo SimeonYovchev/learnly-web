@@ -8,16 +8,18 @@ import WordCard from '../WordCard';
 import Pagination from '../Pagination/Pagination';
 import Sort from '../SortComponent';
 import { wordsSortFields } from '../../constants/sortFields';
+import Search from '../Search/Search';
+import debounceEvent from '../../utils/debounce';
 
 const WordsList = ({
-  words, totalCount, page, size, fetchWords, clearWords, sortBy, direction,
+  words, searchTerm, totalCount, page, size, fetchWords, clearWords, sortBy, direction,
 }) => {
   useEffect(() => {
-    fetchWords(page, size, sortBy, direction);
+    fetchWords(searchTerm, page, size, sortBy, direction);
     return () => {
       clearWords();
     };
-  }, [fetchWords]);
+  }, []);
 
   useEffect(() => {
     window.scrollTo({
@@ -28,7 +30,7 @@ const WordsList = ({
   }, [page]);
 
   const handleChangePage = (e, newPage) => {
-    fetchWords(newPage, size, sortBy, direction);
+    fetchWords(searchTerm, newPage, size, sortBy, direction);
   };
 
   const handleSort = (e) => {
@@ -41,12 +43,18 @@ const WordsList = ({
       sortObject.direction = 'desc';
     }
 
-    fetchWords(page, size, sortObject.sortBy, sortObject.direction);
+    fetchWords(searchTerm, page, size, sortObject.sortBy, sortObject.direction);
+  };
+
+  const handleSearch = (e) => {
+    const { value } = e.target;
+    fetchWords(value, page, size, sortBy, direction);
   };
 
   return (
     <React.Fragment>
-      <div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+        <Search onSearch={debounceEvent(handleSearch, 500)} />
         <Sort
           path={sortBy}
           sortFields={wordsSortFields}
@@ -70,6 +78,7 @@ const WordsList = ({
 const mapStateToProps = state => ({
   words: state.wordsReducer.wordsData.wordsList,
   totalCount: state.wordsReducer.wordsData.totalCount,
+  searchTerm: state.wordsReducer.wordsData.searchTerm,
   page: state.wordsReducer.wordsData.currentPage,
   size: state.wordsReducer.wordsData.itemsPerPage,
   isLoaded: state.wordsReducer.isLoaded,
@@ -86,6 +95,7 @@ const mapDispatchToProps = dispatch => ({
 WordsList.propTypes = {
   words: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   totalCount: PropTypes.number.isRequired,
+  searchTerm: PropTypes.string.isRequired,
   page: PropTypes.number.isRequired,
   size: PropTypes.number.isRequired,
   sortBy: PropTypes.string.isRequired,

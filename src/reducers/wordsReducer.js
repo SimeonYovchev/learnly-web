@@ -10,6 +10,7 @@ const initialState = {
   isLoaded: false,
   isLoading: false,
   wordsData: {
+    searchTerm: '',
     totalCount: 0,
     wordsList: [],
     currentPage: 0,
@@ -29,8 +30,8 @@ export default createReducer(initialState, {
     ...state,
     isLoaded: true,
     isLoading: false,
-    // wordsData: payload,
     wordsData: {
+      searchTerm: payload.searchTerm,
       totalCount: payload.totalCount,
       wordsList: payload.data,
       currentPage: payload.currentPage,

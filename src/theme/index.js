@@ -25,6 +25,7 @@ const theme = createMuiTheme({
           borderColor: '#3C4252',
           borderWidth: 2,
         },
+        height: '40px',
       },
     },
     MuiFormLabel: {

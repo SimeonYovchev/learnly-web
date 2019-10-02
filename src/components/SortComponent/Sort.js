@@ -13,7 +13,7 @@ const Sort = ({ path, sortFields, onSort }) => {
   const classes = useSortStyles();
 
   return (
-    <form className={classes.form}>
+    <form>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel> Sort by </InputLabel>
         <Select

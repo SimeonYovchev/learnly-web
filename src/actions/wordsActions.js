@@ -15,14 +15,15 @@ export const getWordsSuccess = (words) => {
 };
 export const getWordsFailure = () => ({ type: GET_WORDS_FAILURE });
 
-export const getWords = (page, size, sortBy, direction) => {
+export const getWords = (searchTerm, page, size, sortBy, direction) => {
   return (dispatch) => {
     dispatch(getWordsRequest());
 
-    httpService.get(`/words?page=${page}&size=${size}&sortBy=${sortBy}&direction=${direction}`)
+    httpService.get(`/words?search=${searchTerm}&page=${page}&size=${size}&sortBy=${sortBy}&direction=${direction}`)
       .then((response) => {
         const payload = {
           ...response.data,
+          searchTerm,
           currentPage: page,
           itemsPerPage: size,
           sortBy,

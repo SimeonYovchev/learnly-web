@@ -15,26 +15,6 @@ export const createReducer = (initialState, reducerMap) => {
   };
 };
 
-// export const formatLastPracticed = (lastPracticedDate) => {
-//   const practicedDate = new Date(lastPracticedDate);
-//   const now = new Date();
-
-//   const differenceInSeconds = (now.getTime() - practicedDate.getTime()) / 1000;
-//   const differenceInMinutes = Math.floor((differenceInSeconds / 60));
-//   let result = '';
-
-//   if (differenceInMinutes > 0 && differenceInMinutes < 60) {
-//     result = differenceInMinutes === 1 ? `${differenceInMinutes} min ago` : `${differenceInMinutes} mins ago`;
-//   } else if (differenceInMinutes >= 60 && differenceInMinutes < 1440) {
-//     result = differenceInMinutes >= 60 && differenceInMinutes < 120 ? `${Math.floor((differenceInMinutes / 60))} hour ago` : `${Math.floor((differenceInMinutes / 60))} hours ago`;
-//   } else if (differenceInMinutes >= 1440 && differenceInMinutes < 43920) {
-//     result = `${Math.floor((differenceInMinutes / 60))} months ago`;
-//   } else if (differenceInMinutes >= 43920 && differenceInMinutes < 527040) {
-//     result = `${Math.floor((differenceInMinutes / 60))} years ago`;
-//   }
-//   return result;
-// };
-
 const timeMap = {
   moment: {
     range: [0, 1],

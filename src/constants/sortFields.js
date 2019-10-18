@@ -2,15 +2,15 @@
 export const wordsSortFields = [
   {
     key: 1,
+    value: 'createdAt',
     label: 'Date',
-    path: 'createdAt',
   }, {
     key: 2,
+    value: 'updatedAt',
     label: 'Last Practiced',
-    path: 'updatedAt',
   }, {
     key: 3,
+    value: 'answers.totalCount',
     label: 'Total Practiced',
-    path: 'answers.totalCount',
   },
 ];

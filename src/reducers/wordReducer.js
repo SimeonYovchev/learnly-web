@@ -3,6 +3,9 @@ import {
   GET_WORD_REQUEST,
   GET_WORD_SUCCESS,
   GET_WORD_FAILURE,
+  CREATE_WORD_REQUEST,
+  CREATE_WORD_SUCCESS,
+  CREATE_WORD_FAILURE,
   CLEAR_WORD,
 } from '../constants';
 
@@ -35,6 +38,22 @@ export default createReducer(initialState, {
     word: payload,
   }),
   [GET_WORD_FAILURE]: state => ({
+    ...state,
+    isLoaded: false,
+    isLoading: false,
+    error: true,
+  }),
+  [CREATE_WORD_REQUEST]: state => ({
+    ...state,
+    isLoading: true,
+  }),
+  [CREATE_WORD_SUCCESS]: (state, payload) => ({
+    ...state,
+    isLoaded: true,
+    isLoading: false,
+    word: payload,
+  }),
+  [CREATE_WORD_FAILURE]: state => ({
     ...state,
     isLoaded: false,
     isLoading: false,

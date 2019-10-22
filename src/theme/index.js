@@ -30,6 +30,7 @@ const theme = createMuiTheme({
     },
     MuiFormLabel: {
       root: {
+        lineHeight: 0,
         '&$focused': {
           color: '#3C4252',
         },

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Grid } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Grid, Button } from '@material-ui/core';
 import { getWords, clearWords } from '../../actions/wordsActions';
 import WordCard from '../WordCard';
 import Pagination from '../Pagination/Pagination';
@@ -54,6 +55,14 @@ const WordsList = ({
   return (
     <React.Fragment>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+        <Button
+          variant="contained"
+          to="/words/create"
+          component={Link}
+          color="secondary"
+        >
+          Create word
+        </Button>
         <Search onSearch={debounceEvent(handleSearch, 500)} />
         <Sort
           path={sortBy}
